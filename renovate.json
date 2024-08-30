@@ -1,6 +1,11 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
-  ]
+  "enabled": true,
+  "timezone": "Europe/Berlin",
+  "dependencyDashboard": false,
+  "dependencyDashboardTitle": "Renovate Dashboard",
+  "rebaseWhen": "auto",
+  "baseBranches": ["staging"],
+  "git-submodules": {
+    "enabled": true
+  }
 }
