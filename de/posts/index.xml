@@ -1,0 +1,84 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Alle Artikel - mailcow: dockerized - Blog</title><link>https://mailcow.email/de/posts/</link><description>Alle Artikel | mailcow: dockerized - Blog</description><generator>Hugo -- gohugo.io</generator><language>de</language><lastBuildDate>Thu, 15 Aug 2024 14:30:00 +0200</lastBuildDate><atom:link href="https://mailcow.email/de/posts/" rel="self" type="application/rss+xml"/><item><title>🕶️🐄 Moogust Update 2024 | Passwort vergessen?, SOGo 5.11, Rspamd 3.9.1 und mehr | Revision A</title><link>https://mailcow.email/de/posts/2024/release-2024-08/</link><pubDate>Thu, 15 Aug 2024 14:30:00 +0200</pubDate><author>Autor</author><guid>https://mailcow.email/de/posts/2024/release-2024-08/</guid><description><![CDATA[<h1 id="2024-08a-released-am-20082024" class="heading-element">
+  <a href="#2024-08a-released-am-20082024" class="heading-mark"></a>2024-08a (Released am 20.08.2024)</h1><h3 id="dovecot-auf-23211-aktualisiert" class="heading-element">
+  <a href="#dovecot-auf-23211-aktualisiert" class="heading-mark"></a>Dovecot auf 2.3.21.1 aktualisiert</h3><div class="details admonition warning open">
+    <div class="details-summary admonition-title">
+      <i class="icon fa-solid fa-exclamation-triangle fa-fw" aria-hidden="true"></i>Achtung<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="details-content">
+      <div class="admonition-content"><p>Dieser Release enthält Patches für Dovecot (Version 2.3.21.1), welche zwei Sicherheitslücken innerhalb von Dovecot schließen.</p>
+<p><strong>Eine Installation wird dringend empfohlen!</strong></p>
+<p>Siehe Release Notes Dovecot: <a href="https://github.com/dovecot/core/blob/release-2.3.21/NEWS"target="_blank" rel="external nofollow noopener noreferrer">https://github.com/dovecot/core/blob/release-2.3.21/NEWS</a></p>
+</div>
+    </div>
+  </div>
+<h3 id="sonstige-änderungen" class="heading-element">
+  <a href="#sonstige-%c3%a4nderungen" class="heading-mark"></a>Sonstige Änderungen</h3><ul>
+<li>Es wurden Fehler beim Parsen der Docker-Versionsnummer im <code>generate-config.sh</code> sowie im <code>update.sh</code>-Skript behoben.</li>
+<li>Einige Dockerfiles wurden refactored (hat keine Auswirkung auf den Betrieb, dient nur der zukünftigen Weiterentwicklung).</li>
+<li>Für Dovecot wurde eine Exit Condition eingebaut, die den Download von sa-rules betrifft. Bisher war es so, dass der Download erfolgreich sein musste, da Dovecot anderenfalls nicht startete. Nun ist es so, dass der Download nach einigen Versuchen abgebrochen wird, Dovecot aber trotzdem startet.</li>
+<li>In Docker-Containern, die das Tool <code>mysqladmin</code> verwendet haben, wurde auf das neuere Tool <code>mariadb-admin</code> mit derselben Funktion gewechselt, um zukünftige Kompatibilitätsprobleme vorzubeugen.</li>
+<li>In den Bash-Skripten werden einige Bash-Variablen nun korrekt behandelt (Quoting), und einige seltsame nicht-UTF-8-Zeichen wurden ersetzt.</li>
+<li>Durch das Rspamd-Update auf 3.9.1 wurde die UTF-8-Dekodierung in den Pushover- sowie den Quarantäne-Systemen beschädigt, was bei Emojis im Header zu unerwarteten Ergebnissen führen konnte. Dies wurde behoben.</li>
+</ul>
+<hr>
+<h1 id="2024-08-released-am-15082024" class="heading-element">
+  <a href="#2024-08-released-am-15082024" class="heading-mark"></a>2024-08 (Released am 15.08.2024)</h1><p><strong>Moohoo</strong> alle zusammen!</p>
+<p>Der August ist da, und auch mailcow beschert euch ein größeres Update für den (hoffentlich bei euch nicht zu heißen) August.</p>
+<p>Dieses Mal sind einige größere Änderungen mit an Bord, die wir euch hiermit vorstellen wollen:</p>]]></description></item><item><title>🔥🐄 Mooly Update 2024 | Sicherheitsupdate</title><link>https://mailcow.email/de/posts/2024/release-2024-07/</link><pubDate>Mon, 05 Aug 2024 09:08:00 +0200</pubDate><author>Autor</author><guid>https://mailcow.email/de/posts/2024/release-2024-07/</guid><description>2024-07 (Release vom 05.08.2024)Moohoo Alle zusammen!
+Mit dem Mooly Update werden drei Sicherheitslücken in der mailcow geschlossen.
+CVE-2024-41958 - Two-Factor Authentication (2FA) Bypass Vulnerability CVE-2024-41959 - XSS Vulnerability via API Logs CVE-2024-41960 - XSS Vulnerability via Relay Hosts Configuration Changelog Do not add MAILCOW_WHITE on failed DMARC [Postfix] update postscreen_access.cidr Security fixes Der vollständige Changelog, einschließlich der einzelnen Commits, ist für Interessierte jederzeit auf GitHub verfügbar: https://github.com/mailcow/mailcow-dockerized/releases/tag/2024-07
+Ein großes Dankeschön an Julian B.</description></item><item><title>🌙🐄 Mooni Update 2024 | Flatcurve Update Phase 1 - Revision C</title><link>https://mailcow.email/de/posts/2024/release-2024-06/</link><pubDate>Thu, 27 Jun 2024 09:30:00 +0200</pubDate><author>Autor</author><guid>https://mailcow.email/de/posts/2024/release-2024-06/</guid><description><![CDATA[<h2 id="2024-06c-release-vom-12072024" class="heading-element">
+  <a href="#2024-06c-release-vom-12072024" class="heading-mark"></a>2024-06c (Release vom 12.07.2024)</h2><ul>
+<li>Wir haben und nach einigem hin und her (sorry dafür&hellip;) nun doch dazu entschieden, den betroffenen PHP Container auf einer Version die lauffähig (ja die gab es :D) war zu belassen, so lange bis wir nach tieferen Tests bestätigen können, dass es mit einem gepatchten Alpine endlich funktioniert&hellip; solange bleibt der Container zunächst &ldquo;freezed&rdquo;. Der neue Container sorgte bei allen Roundcube usern dazu, dass besagtes nicht mehr funktionierte. Schuld waren hier die Berechtigungen. Da wir nicht ausschließen können, dass nicht noch mehr dadurch bei Third Party Apps kaputt gehen könnte haben wir die Version schließlich zurückgenommen.</li>
+<li>Wir haben einen Fehler in der UI gelöst, welcher das Versions Modal nicht mehr korrekt geöffnet hat. Es wurde zwar geöffnet allerdings wurde man auch direkt zur Release Seite weitergeleitet, was damit besagtes Modal unnötig macht&hellip;</li>
+</ul>
+<h2 id="2024-06b-release-vom-12072024" class="heading-element">
+  <a href="#2024-06b-release-vom-12072024" class="heading-mark"></a>2024-06b (Release vom 12.07.2024)</h2><ul>
+<li>Regulärer Ausdruck im Backup/Restore Skript verbessert, sollte nun Zahlen wie 10, 20 usw. unterstützen.</li>
+<li>Der PHP Container wurde auf Basis von Debian 12 gebaut. Dies (sollte, bitte&hellip; der Bug ist echt nervig&hellip;) endlich die Probleme die einige von euch hatten bzgl. Blanker mailcow UI oder fehlerhaften Container Werten innerhalb der Ui (etc.) beheben. Wir sind aber nach wie vor dran, das Problem im Alpine Container zu identifizieren, damit wir langfristig wieder die Alpine Basis nutzen können (Aufgrund der kleineren Container Größe).</li>
+<li>In der Web UI wurde die WIP Warnung für die ARM64 Versionen entfernt. Ist mittlerweile (eigentlich schon von Anfang an&hellip;) stabil! Danke an alle, die das nutzen!</li>
+<li>Postfix&rsquo;s Postcreen Access List wurde aktualisiert auf Stand 1. Juli 2024.</li>
+</ul>
+<h2 id="2024-06a-release-vom-27062024" class="heading-element">
+  <a href="#2024-06a-release-vom-27062024" class="heading-mark"></a>2024-06a (Release vom 27.06.2024)</h2><ul>
+<li>Rollback der kaputten Übersetzungen</li>
+<li>Fehlerhafter cURL Request innerhalb des PHP-FPM Containers behoben, erzeugt durch einen c-ares Fehler im Container</li>
+</ul>
+<h2 id="2024-06-release-vom-27062024" class="heading-element">
+  <a href="#2024-06-release-vom-27062024" class="heading-mark"></a>2024-06 (Release vom 27.06.2024)</h2><p><strong>Moohoo</strong> alle zusammen!</p>
+<p>Nach unserem <a href="https://mailcow.email/de/posts/2024/development-change/"target="_blank" rel="external nofollow noopener noreferrer">Statement</a> ist es mal wieder Zeit, euch ein Update zu bescheren.</p>
+<p>Diesmal auch mit ein paar zusätzlichen Informationen:</p>
+<h3 id="-kritische-änderungen" class="heading-element">
+  <a href="#-kritische-%c3%a4nderungen" class="heading-mark"></a>⚠️ Kritische Änderungen</h3><h4 id="postfix-tls-11-tls-10-wegfall" class="heading-element">
+  <a href="#postfix-tls-11-tls-10-wegfall" class="heading-mark"></a>Postfix TLS 1.1, TLS 1.0 Wegfall</h4><p>Im Zuge des 2024-06 Updates wurde Postfix auf 3.7.10 und Debian 12 aktualisiert. Zeitgleich wird mit diesem Update eine Kommunikation zwischen den SMTP-Servern auf mindestens TLS Version 1.2 vorausgesetzt.
+Damit schaffen wir die älteren TLS-Versionen 1.0 und 1.1 als Verschlüsselungsversion ab.</p>]]></description></item><item><title>🌟 Wichtige Neuigkeiten zur Weiterentwicklung von mailcow</title><link>https://mailcow.email/de/posts/2024/development-change/</link><pubDate>Fri, 07 Jun 2024 16:00:10 +0200</pubDate><author>Autor</author><guid>https://mailcow.email/de/posts/2024/development-change/</guid><description>Liebe mailcow Community,
+die mailcow erfreut sich weiterhin steigender Beliebtheit. Darüber freuen wir uns natürlich.
+Um bei dem Projekt weiterhin die notwendige Qualität zu liefern und der Community jederzeit gerecht zu werden, haben wir unsere Updateintervalle entsprechend angepasst und erweitert. Somit können wir weiterhin sicherstellen, die Qualität der Updates für Bug- und Feature-Requests auf dem gewohnt hohen Niveau zu halten.
+So werden wir zukünftig die Updateintervalle an die Signifikanz des Umfangs der Requests koppeln.</description></item><item><title>🥚🐄 Moopril Update 2024 | Sicherheitsupdate</title><link>https://mailcow.email/de/posts/2024/release-2024-04/</link><pubDate>Thu, 04 Apr 2024 09:30:00 +0200</pubDate><author>Autor</author><guid>https://mailcow.email/de/posts/2024/release-2024-04/</guid><description>2024-04 (Release vom 04.04.2024)Moohoo Alle zusammen!
+Mit dem Moopril Update werden zwei Sicherheitslücken in der mailcow geschlossen.
+CVE-2024-31204: XSS Vulnerability via Exception Handler CVE-2024-30270: Path Traversal and Arbitrary Code Execution Vulnerability Außerdem wurde SOGo auf die Version 5.10.0 aktualisiert und ein Fehler in der domainweiten Fußzeile wurde behoben.
+Changelog chore(deps): update thollander/actions-comment-pull-request action to v2.5.0 by @renovate in https://github.com/mailcow/mailcow-dockerized/pull/5747 Translations update from Weblate by @milkmaker in https://github.com/mailcow/mailcow-dockerized/pull/5762 sogo: upgrade to 5.</description></item><item><title>🤔🔒🐮 Wie schaut's aus? - LDAP Integration</title><link>https://mailcow.email/de/posts/2024/whats-up-ldap/</link><pubDate>Mon, 11 Mar 2024 11:10:10 +0200</pubDate><author>Autor</author><guid>https://mailcow.email/de/posts/2024/whats-up-ldap/</guid><description><![CDATA[<p><strong>Moohoo zusammen!</strong></p>
+<p>Wie bereits auf den Social-Media-Kanälen angekündigt, servieren wir euch heute wieder eine neue Ausgabe unserer Rubrik: <code>Wie schaut's aus?</code>.</p>
+<p>Heute geht es explizit um ein Thema, das uns alle brennend interessiert: <strong>LDAP/OIDC-Integration</strong> und die damit verbundene <strong>Überholung des Authentifizierungssystems</strong>.</p>
+<p>Wir haben euch ja in der Vergangenheit auf dem Laufenden gehalten, dass wir fieberhaft an der Integration von LDAP und OIDC arbeiten. Schließlich ist diese Funktion nicht ohne Grund eine der am meisten geforderten Funktionen für mailcow überhaupt – und das zurecht!</p>
+<p>Allerdings war unser Plan, das Ganze bereits im ersten Quartal 2024 herauszubringen oder ganz früher mal zu Weihnachten 2023. Beides konnte nicht gehalten werden, wie ihr gemerkt habt&hellip;</p>]]></description></item><item><title>🐥🐄 Febmooary 2024 Update | ClamAV Sicherheitsupdate</title><link>https://mailcow.email/de/posts/2024/release-2024-02/</link><pubDate>Thu, 15 Feb 2024 10:53:22 +0200</pubDate><author>Autor</author><guid>https://mailcow.email/de/posts/2024/release-2024-02/</guid><description>2024-02 (Release vom 15.02.2024)Moohoo Alle zusammen!
+Mit dem Febmooary werden weitere, erst kürzlich veröffentlichte, Sicherheitslücken in der mailcow geschlossen. Dabei handelt es sich um die folgenden Sicherheitslücken im ClamAV Dienst, welche mit der Version 1.2.2 behoben wurden:
+CVE-2024-20290: Fixed a possible heap overflow read bug in the OLE2 file parser that could cause a denial-of-service (DoS) condition. CVE-2024-20328: Fixed a possible command injection vulnerability in the &amp;ldquo;VirusEvent&amp;rdquo; feature of ClamAV&amp;rsquo;s ClamD service.</description></item><item><title>🦾6️⃣4️⃣ 🐄 Janmuhary 2024 Update | Das Multiarch (x86 + ARM64) &amp; Performance Update - Revision E</title><link>https://mailcow.email/de/posts/2024/release-2024-01/</link><pubDate>Thu, 08 Feb 2024 11:19:02 +0200</pubDate><author>Autor</author><guid>https://mailcow.email/de/posts/2024/release-2024-01/</guid><description><![CDATA[<div class="featured-image"><img loading="eager" src="/images/2024/January/release-arm64.jpg" alt="🦾6️⃣4️⃣ 🐄 Janmuhary 2024 Update | Das Multiarch (x86 &#43; ARM64) &amp; Performance Update - Revision E" title="🦾6️⃣4️⃣ 🐄 Janmuhary 2024 Update | Das Multiarch (x86 &#43; ARM64) &amp; Performance Update - Revision E" referrerpolicy="no-referrer"/></div>2024-01e (Release vom 08.02.2024)Netfilter-Verbesserungen
+Behobene Isolationsregel für iptables: Ein Problem in Bezug auf die Isolationsregel von mailcow in iptables wurde behoben. Dank der Beiträge von @FreddleSpl0it und @tomudding. PR #5700
+Entspanntere IP-Überprüfung in NFTables.py: Eine entspanntere IP-Überprüfung in NFTables.py wurde eingestellt, um die Kompatibilität zu verbessern. Vielen Dank an @amorfo77 für den Beitrag. PR #5711
+SOGo-Korrekturen
+Behobener SOGo-Absturz auf älteren Kernels: Ein SOGo-Absturz, der auf Kernels älter als 5.10.0-X auftrat, wurde behoben.]]></description></item><item><title>⚠️ Wichtige Änderung bei der Nutzung von mailcow mit deaktivierter IPv6 konnektivität ⚠️</title><link>https://mailcow.email/de/posts/2024/docker-25-ipv6-changes/</link><pubDate>Thu, 01 Feb 2024 11:19:02 +0200</pubDate><author>Autor</author><guid>https://mailcow.email/de/posts/2024/docker-25-ipv6-changes/</guid><description><![CDATA[<p><strong>Moohoo zusammen!</strong></p>
+<p>Wir möchten in diesem Blog Eintrag einmal auf gravierende Änderungen im Bezug auf Docker und der IPv6 Nutzbarkeit für mailcow eingehen.</p>]]></description></item><item><title>🛷 🐄 Moocember 2023 Update | Netfilter NFTables Support and Banlist Endpoint</title><link>https://mailcow.email/de/posts/2023/release-2023-12/</link><pubDate>Tue, 19 Dec 2023 11:19:02 +0200</pubDate><author>Autor</author><guid>https://mailcow.email/de/posts/2023/release-2023-12/</guid><description><![CDATA[<h2 id="2023-12a-release-am-29122023" class="heading-element">
+  <a href="#2023-12a-release-am-29122023" class="heading-mark"></a>2023-12a (Release am 29.12.2023)</h2><h3 id="changelog" class="heading-element">
+  <a href="#changelog" class="heading-mark"></a>Changelog</h3><ul>
+<li>chore(deps): update dependency nextcloud/server to v28.0.1 by @renovate in <a href="https://github.com/mailcow/mailcow-dockerized/pull/5614"target="_blank" rel="external nofollow noopener noreferrer">https://github.com/mailcow/mailcow-dockerized/pull/5614</a></li>
+<li>Translations update from Weblate by @milkmaker in <a href="https://github.com/mailcow/mailcow-dockerized/pull/5617"target="_blank" rel="external nofollow noopener noreferrer">https://github.com/mailcow/mailcow-dockerized/pull/5617</a></li>
+<li>[Postfix] Do not remove X-Mailer header by @feldsam in <a href="https://github.com/mailcow/mailcow-dockerized/pull/5504"target="_blank" rel="external nofollow noopener noreferrer">https://github.com/mailcow/mailcow-dockerized/pull/5504</a></li>
+<li>Translations update from Weblate by @milkmaker in <a href="https://github.com/mailcow/mailcow-dockerized/pull/5622"target="_blank" rel="external nofollow noopener noreferrer">https://github.com/mailcow/mailcow-dockerized/pull/5622</a></li>
+<li>[Postfix] set smtpd_forbid_bare_newline = yes</li>
+</ul>
+<hr>
+<h2 id="2023-12-release-am-19122023" class="heading-element">
+  <a href="#2023-12-release-am-19122023" class="heading-mark"></a>2023-12 (Release am 19.12.2023)</h2><p><strong>Moo hoo zusammen!</strong></p>
+<p>Wir haben vor den Feiertagen noch einige neue Netfilter Features für euch.
+Darüber hinaus kann der Watchdog nun Benachrichtigungen über Webhooks versenden. Dazu müssen einfach die Variablen <code>WATCHDOG_NOTIFY_WEBHOOK</code> und <code>WATCHDOG_NOTIFY_WEBHOOK_BODY</code> in der <code>mailcow.conf</code> entsprechend konfiguriert werden.</p>]]></description></item></channel></rss>
